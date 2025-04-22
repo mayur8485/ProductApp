@@ -1,0 +1,15 @@
+.view-container {
+    overflow: auto;
+    min-height: 300px;
+    width: 100%;
+}
+
+.chart-container {
+    position: relative;
+    resize: both;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 4px 19px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

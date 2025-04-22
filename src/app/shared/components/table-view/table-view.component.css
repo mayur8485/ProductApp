@@ -1,0 +1,7 @@
+.table-header {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa; /* Optional: Background to match the table */
+    z-index: 1;
+  }
+  

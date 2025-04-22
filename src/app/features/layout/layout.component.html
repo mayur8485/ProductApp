@@ -1,0 +1,43 @@
+<div class="layout-box p-2">
+  <div class="py-2">
+    <button class="btn btn-primary" (click)="onAddProduct()">
+      Add New Product
+    </button>
+  </div>
+  <app-table-view
+    [headers]="tableHeader"
+    [data]="productData()"
+    (onActionEmit)="OnTableAction($event)"
+  ></app-table-view>
+  <app-product
+    [isOffcanvas]="isOffcanvas"
+    (enabledChange)="onCloseOffCanvas()"
+    [updateProduct]="updateProduct"
+    [mode]="mode"
+  ></app-product>
+
+  <div class="row w-100">
+    <div class="col-6">
+      <app-bar-chart
+        [properties]="barProperties1"
+        [data]="barChartData1()"
+        [id]="1"
+      ></app-bar-chart>
+    </div>
+    <div class="col-6">
+      <app-bar-chart
+        [properties]="barProperties2"
+        [data]="barChartData2()"
+        [id]="2"
+      ></app-bar-chart>
+    </div>
+    <div class="col-6">
+      <app-pie [properties]="pieChartProps1" [data]="pieChartData1()" [id]="3">
+      </app-pie>
+    </div>
+    <div class="col-6">
+      <app-pie [properties]="pieChartProps2" [data]="pieChartData2()" [id]="4">
+      </app-pie>
+    </div>
+  </div>
+</div>

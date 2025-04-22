@@ -1,0 +1,11 @@
+<div class="chart-container" *ngIf="properties && data">
+  <h3>Pie Chart</h3>
+  <h4>
+    {{ properties.xAxis | titlecase }} - {{ properties.yAxis | titlecase }}
+  </h4>
+  <div
+    [id]="'pieChart_' + id"
+    class="view-container mx-auto"
+    style="width: fit-content"
+  ></div>
+</div>

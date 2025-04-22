@@ -1,0 +1,79 @@
+<div class="table-container">
+  <table class="table table-hover" [style]="{ height: height }">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" style="background-color: #e6ef8c">#</th>
+        @for (head of headers; track $index) {
+        <th
+          scope="col"
+          style="background-color: #e6ef8c"
+          [ngStyle]="{
+            width: head?.type === 'BUTTON' ? '100px' : 'auto',
+            'text-align': head?.type === 'BUTTON' ? 'center' : 'left'
+          }"
+        >
+          {{ head.label }}
+        </th>
+
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @if(dataChunks.length>0) { @for (row of dataChunks; track $index) {
+      <tr>
+        <th scope="row">{{ startIndex + $index + 1 }}</th>
+        @for (head of headers; track $index) { @if(head?.type === 'BUTTON') {
+        <td class="text-center">
+          <div class="dropdown">
+            <button
+              class="btn"
+              type="button"
+              id="dropdownMenu2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              @for(action of head?.actions; track $index) {
+              <li>
+                <button
+                  class="dropdown-item"
+                  type="button"
+                  (click)="OnExecuteAction(action, row)"
+                >
+                  {{ action.label }}
+                </button>
+              </li>
+              }
+            </ul>
+          </div>
+        </td>
+        }@else {
+        <td class="text-nowrap">
+          {{ row[head.key] }}
+        </td>
+        } }
+      </tr>
+      } }@else {
+      <tr>
+        <td class="text-center" attr.colspan="{{ headers.length + 1 }}">
+          No Data Found
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+  <div class="box d-flex flex-row justify-content-center">
+    <ngb-pagination
+      [collectionSize]="noOfPages"
+      [(page)]="page"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="false"
+      [boundaryLinks]="true"
+      (pageChange)="addPagination(page)"
+    />
+  </div>
+</div>

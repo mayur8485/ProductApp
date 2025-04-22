@@ -1,0 +1,97 @@
+<ng-template #offcanvasContent let-offcanvas>
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title" id="product_info">Product Info</h3>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      (click)="closeOffcanvas(offcanvas)"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="product">
+      <form [formGroup]="productForm">
+        <div class="row gy-3">
+          <div class="form-group col-md-6">
+            <label for="name" class="pb-1">Name</label>
+            <span class="text-danger">*</span>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter Product Name"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="category" class="form-label">Category</label>
+            <span class="text-danger">*</span>
+            <select
+              id="category"
+              class="form-select"
+              formControlName="category"
+            >
+              <option value="" selected>Please select the receiver</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Home">Home</option>
+              <option value="Food">Food</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="price" class="pb-1">Price</label>
+            <span class="text-danger">*</span>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              placeholder="Enter Price"
+              formControlName="price"
+            />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="stock" class="pb-1">Stock</label>
+            <span class="text-danger">*</span>
+            <input
+              type="number"
+              class="form-control"
+              id="stock"
+              placeholder="Enter stock"
+              formControlName="stock"
+            />
+          </div>
+
+          <div class="col-12 d-flex gap-2 justify-content-center">
+            @if(mode === 'CREATE') {
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="onSubmit(offcanvas)"
+            >
+              Save
+            </button>
+            }@else if(mode === 'EDIT') {
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="onSubmit(offcanvas)"
+            >
+              Update
+            </button>
+            }
+
+            <!-- <button class="btn btn-danger" type="button">Reset</button> -->
+          </div>
+          @if(hasError) {
+          <div class="d-flex justify-content-center" style="color: red">
+            <span class="text-danger">*</span>Please fill the required filed
+          </div>
+          }
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

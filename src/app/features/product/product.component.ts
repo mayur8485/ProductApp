@@ -53,6 +53,9 @@ export class ProductComponent implements OnInit, OnChanges {
     if (changes['isOffcanvas']['currentValue']) {
       this.productForm.reset();
       this.openOffcanvas(this.offcanvas);
+      if (this.mode === 'EDIT') {
+        this.openFormInMode();
+      }
     }
     if (changes['mode']) {
       if (changes['mode']['currentValue'] === ACTIONS.EDIT) {

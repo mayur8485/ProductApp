@@ -118,9 +118,9 @@ export class LayoutComponent implements OnInit {
 
   OnTableAction(event: TableActionEmitter) {
     if (event.action.key === ACTIONS.EDIT) {
-      this.onAddProduct();
+      this.isOffcanvas = true;
       this.updateProduct = event.data;
-      this.mode = ACTIONS.EDIT;
+      this.mode = 'EDIT';
     } else if (event.action.key === ACTIONS.DELETE) {
       this.store.dispatch(deleteData({ id: event.data.id }));
     } else {

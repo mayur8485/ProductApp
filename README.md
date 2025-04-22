@@ -61,3 +61,5 @@ dummyData.ts
 6. Rest of files like common-enums.ts, common-interfaces.ts, common-dataTypes.ts, and configs files are supporting files.
 
 Above project implements some concepts which was mentioned in project description. We can also simplify it just using services and subjects in that services (Behavior Subject)
+
+Note : Chart has hardcoded height and width there in small view it might not visible clearly. Also same for Table compoenent.
